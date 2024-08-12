@@ -24,7 +24,7 @@ jobs:
     - name: Connect, update repository, and run SonarQube scan
       run: |
         ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd /home/inspiringlab/inspiringlab_project/Newtest
+          cd /home/inspiringlab/inspiringlab_project/Newtest/HotelBook_Java_With_CI-CD_Monitoring
           pwd
           git branch
           git pull origin master
