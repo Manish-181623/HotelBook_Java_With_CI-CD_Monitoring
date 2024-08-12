@@ -35,7 +35,7 @@ jobs:
             -Dsonar.projectKey=New_project \
             -Dsonar.sources=. \
             -Dsonar.host.url=http://63.142.252.233:9000 \
-            -Dsonar.login= sqp_f1712bb70e31400fb25152fad217cd7c27296e39
+            -Dsonar.login=sqp_f1712bb70e31400fb25152fad217cd7c27296e39
 
           echo "SonarQube scan completed"
         EOF
