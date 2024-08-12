@@ -1,0 +1,34 @@
+name: Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+
+    - name: Connect, update repository, and run SonarQube scan
+      run: |
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+          cd /home/inspiringlab/inspiringlab_project/Newtest
+          pwd
+          git branch
+          git pull origin master
+          echo "Successfully performed the assigned operation"
+
+          # Run SonarQube scan
+          sonar-scanner \
+            -Dsonar.projectKey=New_project \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=http://63.142.252.233:9000 \
+            -Dsonar.login=sqp_019575af9288a5998b102041c1410f6ccd6221e7
+
+          echo "SonarQube scan completed"
+        EOF
